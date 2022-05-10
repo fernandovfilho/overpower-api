@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  server:
+    command: npm run debug
+    build: .
+    volumes:
+      - ./dist/src:/server/dist/src/ # same folder structure on local machine and docker container
+    ports:
+      - "8080:8080"
+      - "9222:9222"

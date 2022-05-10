@@ -4,7 +4,8 @@
   "description": "NodeJS API to pratice SOLID, TDD with Typescript and more",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --watch --transpile-only src/server.ts",
+    "dev:debug": "ts-node-dev --transpile-only --respawn --inspect=7001 --project tsconfig.json src/server.ts",
+    "dev": "ts-node-dev --transpile-only --respawn --project tsconfig.json src/server.ts",
     "build": "npx tsc --build",
     "start": "node dist/server.js",
     "test": "jest --coverage && node coverage-verifier.js",
@@ -44,7 +45,7 @@
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
     "ts-jest": "^28.0.2",
-    "ts-node-dev": "1.1.8",
+    "ts-node-dev": "^1.1.8",
     "typescript": "4.6.4"
   },
   "dependencies": {
