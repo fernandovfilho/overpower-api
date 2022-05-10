@@ -4,5 +4,6 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  coverageReporters: ['text', 'json-summary', 'lcov'],
 };
 export default config;

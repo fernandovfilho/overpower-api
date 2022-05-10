@@ -7,7 +7,8 @@
     "dev": "tsnd --watch --transpile-only src/server.ts",
     "build": "npx tsc --build",
     "start": "node dist/server.js",
-    "test": "jest",
+    "test": "jest --coverage && node coverage-verifier.js",
+    "test:dev": "jest --watch",
     "lint": "eslint . --ext .ts",
     "lint:fix": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },

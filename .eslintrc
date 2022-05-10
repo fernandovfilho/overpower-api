@@ -11,6 +11,7 @@
       "plugin:@typescript-eslint/recommended",
       "prettier"
     ],
+    "ignorePatterns": ["*.js"],
     "rules": {
       "no-console": 1,
       "prettier/prettier": 2
