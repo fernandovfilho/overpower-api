@@ -18,6 +18,7 @@
         );
       }
     }
+    console.log({ COMMIT_MESSAGE: process.env.COMMIT_MESSAGE });
     console.log('Coverage OK');
   } catch (error) {
     console.log(error);
