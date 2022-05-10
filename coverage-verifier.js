@@ -6,6 +6,14 @@
       functions: 70,
       branches: 60,
     };
+    const skipVerificationMessage = '[skip coverage-verifier]';
+
+    const commitMessage = process.env.COMMIT_MESSAGE || '';
+
+    if (commitMessage.includes(skipVerificationMessage)) {
+      console.log('Coverage verification SKIPPED');
+      return;
+    }
 
     const coverageResume = require('./coverage/coverage-summary.json');
 
