@@ -1,8 +1,8 @@
-import { Router } from "express";
-import { userRoutes } from "./useCases/User/userRoutes";
+import { Router } from 'express';
+import { userRoutes } from './useCases/User/userRoutes';
 
 const routes = Router();
 
-routes.use("/users", userRoutes);
+routes.use('/users', userRoutes);
 
 export { routes };
