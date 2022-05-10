@@ -11,7 +11,7 @@
     const commitMessage = process.env.COMMIT_MESSAGE || '';
 
     if (commitMessage.includes(skipVerificationMessage)) {
-      console.log('Coverage verification SKIPPED');
+      console.log('Coverage verification: SKIPPED');
       return;
     }
 
@@ -26,9 +26,9 @@
         );
       }
     }
-    console.log({ COMMIT_MESSAGE: process.env.COMMIT_MESSAGE });
-    console.log('Coverage OK');
+    console.log('Coverage verification: OK');
   } catch (error) {
+    console.log('Coverage verification: ERROR');
     console.log(error);
     process.exit(1);
   }
