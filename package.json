@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsnd --watch --transpile-only src/server.ts",
-    "build": "tsc --build",
+    "build": "npx tsc --build",
     "start": "node dist/server.js",
     "test": "jest",
     "lint": "eslint . --ext .ts",
@@ -44,7 +44,6 @@
     "prettier": "^2.6.2",
     "ts-jest": "^28.0.2",
     "ts-node-dev": "1.1.8",
-    "tsc": "^2.0.4",
     "typescript": "4.6.4"
   },
   "dependencies": {
