@@ -17,10 +17,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      env:
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
+      env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
