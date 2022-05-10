@@ -1,22 +1,19 @@
+import { PrismaClient } from '@prisma/client';
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../IUsersRepository';
 
 export class DatabaseUsersRepository implements IUsersRepository {
-  private users: User[] = [];
+  constructor(private prismaClient: PrismaClient) {}
 
-  save(user: User): Promise<User> {
-    this.users.push(user);
-    return Promise.resolve(user);
+  async save(user: User): Promise<User> {
+    await this.prismaClient.user.create({ data: user });
+    return await this.findByEmail(user.email);
   }
   update(user: User): Promise<User> {
     throw new Error('Method not implemented.');
   }
-  findByEmail(email: string): Promise<User> {
-    const user = this.users.find((user) => user.email === email);
-    if (!user) {
-      return Promise.resolve(null);
-    }
-    return Promise.resolve(user);
+  async findByEmail(email: string): Promise<User> {
+    return await this.prismaClient.user.findUnique({ where: { email: email } });
   }
   list(): Promise<User[]> {
     throw new Error('Method not implemented.');

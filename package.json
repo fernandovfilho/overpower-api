@@ -8,7 +8,9 @@
     "dev": "ts-node-dev --transpile-only --respawn --project tsconfig.json src/server.ts",
     "build": "npx tsc --build",
     "start": "node dist/server.js",
-    "test": "jest --coverage && node coverage-verifier.js",
+    "test": "npm run test:db:setup",
+    "test:db:setup": "dotenv -e .env.test -- npx prisma db push --force-reset && npm run test:coverage",
+    "test:coverage": "dotenv -e .env.test -- jest --coverage && node coverage-verifier.js",
     "test:dev": "jest --watch",
     "lint": "eslint . --ext .ts",
     "lint:fix": "prettier --config .prettierrc 'src/**/*.ts' --write"
@@ -49,8 +51,11 @@
     "typescript": "4.6.4"
   },
   "dependencies": {
+    "@prisma/client": "^3.14.0",
     "cors": "2.8.5",
+    "dotenv-cli": "^5.1.0",
     "express": "4.18.1",
+    "prisma": "^3.14.0",
     "uuid": "^8.3.2"
   }
 }

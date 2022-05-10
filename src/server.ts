@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/v1', routes);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8888;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server ready at port: ${PORT}`);

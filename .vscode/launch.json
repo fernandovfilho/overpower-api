@@ -8,7 +8,11 @@
         "restart": true,
         "port": 7001,
         "address": "localhost",
-        "localRoot": "${workspaceFolder}"
+        "localRoot": "${workspaceFolder}",
+        "sourceMapPathOverrides": {
+          "<WORKDIR>/*": "${workspaceRoot}/*"
+        },
+        "remoteRoot": "/server/"
       }
     ]
   }
