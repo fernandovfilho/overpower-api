@@ -5,7 +5,7 @@ import { ICreateUserRequestDTO } from './CreateUserDTO';
 export class CreateUserUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
-  async execute(data: ICreateUserRequestDTO) {
+  async execute(data: ICreateUserRequestDTO): Promise<User> {
     const userAlreadyExists = await this.usersRepository.findByEmail(
       data.email,
     );
@@ -17,5 +17,7 @@ export class CreateUserUseCase {
     const user = new User(data);
 
     await this.usersRepository.save(user);
+
+    return user;
   }
 }
