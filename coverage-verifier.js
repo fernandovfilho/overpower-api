@@ -3,8 +3,8 @@
     const minPercentAccepted = {
       lines: 80,
       statements: 80,
-      functions: 70,
-      branches: 60,
+      functions: 60,
+      branches: 50,
     };
     const skipVerificationMessage = '[skip coverage-verifier]';
 
