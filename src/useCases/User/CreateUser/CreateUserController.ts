@@ -6,9 +6,8 @@ export class CreateUserController {
   constructor(private createUserCase: CreateUserUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const data = request.body as ICreateUserRequestDTO;
-
     try {
+      const data = request.body as ICreateUserRequestDTO;
       await this.createUserCase.execute(data);
       return response.status(201).send();
     } catch (error) {

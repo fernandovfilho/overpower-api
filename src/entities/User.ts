@@ -14,3 +14,5 @@ export class User {
     }
   }
 }
+
+export type UserWithoutPassword = Omit<User, 'password'>;

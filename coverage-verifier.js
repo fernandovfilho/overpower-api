@@ -1,10 +1,10 @@
 (() => {
   try {
     const minPercentAccepted = {
-      lines: 80,
-      statements: 80,
-      functions: 60,
-      branches: 50,
+      lines: 90,
+      statements: 90,
+      functions: 70,
+      branches: 90,
     };
     const skipVerificationMessage = '[skip coverage-verifier]';
 

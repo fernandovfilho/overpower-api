@@ -4,6 +4,7 @@ export interface ILoginRequestDTO {
 }
 
 export interface ILoginResponse {
+  id: string;
   email: string;
   token: string;
 }

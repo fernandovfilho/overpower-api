@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { User } from '../../entities/User';
+import { User, UserWithoutPassword } from '../../entities/User';
+import { IRequestGetUser } from '../../useCases/User/GetUser/GetUserDTO';
 import { IUsersRepository } from '../IUsersRepository';
 
 export class DatabaseUsersRepository implements IUsersRepository {
@@ -20,5 +21,11 @@ export class DatabaseUsersRepository implements IUsersRepository {
   }
   delete(id: string): Promise<void> {
     throw new Error('Method not implemented.');
+  }
+  async getUser(data: IRequestGetUser): Promise<UserWithoutPassword> {
+    return await this.prismaClient.user.findFirst({
+      where: { ...data },
+      select: { password: false, name: true, id: true, email: true },
+    });
   }
 }
