@@ -1,10 +1,11 @@
 import { User } from '../../../entities/User';
 import { DatabaseUsersRepository } from '../../../repositories/implementations/DatabaseUsersRepository';
-import { prismaClient } from '../../../repositories/PrismaClient';
+import { PrismaDatabaseClient } from '../../../repositories/PrismaClient';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
-describe('CreateUserUseCase::execute', () => {
+describe(`${CreateUserUseCase.name}::execute`, () => {
   let createUserUseCase: CreateUserUseCase;
+  const prismaClient = new PrismaDatabaseClient().client;
   const databaseUsersRepository = new DatabaseUsersRepository(prismaClient);
   const testUser = {
     email: 'user@test.com',
@@ -26,5 +27,9 @@ describe('CreateUserUseCase::execute', () => {
     expect(findByEmailSpy).toHaveBeenCalledWith(testUser.email);
     expect(saveSpy).toHaveBeenCalledTimes(1);
     expect(newUser.name).toEqual(testUser.name);
+  });
+
+  afterAll(async () => {
+    await prismaClient.user.deleteMany();
   });
 });
