@@ -1,2 +1,2 @@
 # overpower-api
-NodeJS API to pratice SOLID, TDD with Typescript and more
+NodeJS API to pratice SOLID, TDD with Typescript, Prisma and more
