@@ -18,16 +18,19 @@ jobs:
 
     services:
       mysql:
-        image: mysql:latest
+        image: postgres:latest
         env:
-          MYSQL_DATABASE: test_db
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_USER: overpower_user
-          MYSQL_PASSWORD: overpower_pass
-          MYSQL_ROOT_PASSWORD: root
+          POSTGRES_DB: test_db
+          POSTGRES_PASSWORD: postgres_pass
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: postgres
         ports:
-          - 3307:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 5432:5432
+        options: options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v3
